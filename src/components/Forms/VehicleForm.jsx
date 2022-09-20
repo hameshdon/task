@@ -1,7 +1,7 @@
-import React from "react";
+import React,{useState} from "react";
 import "../../App.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faXmark} from "@fortawesome/free-solid-svg-icons";
+import { faXmark} from "@fortawesome/free-solid-svg-icons";
 
 
 const options = [
@@ -43,7 +43,55 @@ const options = [
 
 
 export default function VehicleForm({vehicle,children,onClose}) {
+  // const {
+  //   setCartUpdate,
+  //   setCartApi
+
+
+
+  // } = useContext(GlobalContext);
+  const [selecttoll, setselecttoll] = useState('');
+  const [vehicleType, setVehicleType] = useState('');
+  const [vehicleNum, setVehicleNum] = useState('');
+  const [tariff, setTariff] = useState('');
+
+
     if (!vehicle) return null;
+   
+    function selecttollUpdate(e) {
+      setselecttoll(e.target.value)
+  }
+
+    function vehicleTypeUpdate(e) {
+      setVehicleType(e.target.value)
+  }
+
+
+    function vehicleNumUpdate(e) {
+      setVehicleNum(e.target.value)
+  }
+  function tariffUpdate(e) {
+    setTariff(e.target.value)
+  }
+console.log("=====>",vehicleType, vehicleNum,tariff)
+
+    function getAlldetails(e) {
+      e.preventDefault()
+      localStorage.setItem('selecttoll', selecttoll);
+      localStorage.setItem('vehicleType', vehicleType);
+      localStorage.setItem('vehicleNum', vehicleNum);
+      localStorage.setItem('tariff', tariff);
+      
+  }
+  function getData() {
+    console.log(localStorage.getItem('selecttoll'))
+    console.log(localStorage.getItem('vehicleType'))
+    console.log(localStorage.getItem('vehicleNum'));
+    console.log(localStorage.getItem('tariff'))
+   
+}
+
+
     return(
         <div>
             <div className="vehicle-form-container">
@@ -52,12 +100,12 @@ export default function VehicleForm({vehicle,children,onClose}) {
                <FontAwesomeIcon  onClick={onClose} icon={faXmark} />
                </div>
                 <p style={{textAlign:"center"}}>Add new entry</p>
-                <form>
+                <form onSubmit={getAlldetails}>
                    <div style={{display:"flex",flexDirection:"column",marginBottom:"18px"}}>
                     <label className="label-text">
-                        Select toll Name
+                        Select toll Name<abr title="required">*</abr>
                     </label>
-                    <select className="input-field">
+                    <select className="input-field" required  value={selecttoll}  onChange={selecttollUpdate}> 
                         
            
             {tollList.map((option) => (
@@ -70,9 +118,9 @@ export default function VehicleForm({vehicle,children,onClose}) {
                     </div>
                     <div style={{display:"flex",flexDirection:"column",marginBottom:"18px"}}>
                     <label className="label-text">
-                        Select vehicle type
+                        Select vehicle type<abr title="required">*</abr>
                     </label>
-                    <select className="input-field">
+                    <select className="input-field" value={vehicleType} onChange={vehicleTypeUpdate}>
                         
            
             {options.map((option) => (
@@ -84,21 +132,22 @@ export default function VehicleForm({vehicle,children,onClose}) {
           </select>
                     </div>
                     <div style={{display:"flex",flexDirection:"column",marginBottom:"18px"}}>
-                    <label className="label-text">
-                     Vehicle Number
+                    <label className="label-text"  required>
+                     Vehicle Number<abr title="required">*</abr>
                     </label>
-                    <input className="input-field" placeholder="Enter login id" type="text"/>
+                    <input className="input-field" value={vehicleNum} onChange={vehicleNumUpdate} placeholder="Enter login id" type="text" required/>
                     </div>
                     <div style={{display:"flex",flexDirection:"column",marginBottom:"18px"}}>
                     <label className="label-text">
-                      Tariff
+                      Tariff <abr title="required">*</abr>
                     </label>
-                    <input className="input-field" placeholder="Tariff amount" type="text"/>
+                    <input className="input-field" placeholder="Tariff amount" value={tariff} onChange={tariffUpdate}  type="number" required/>
                     </div>
                   
-                    <button className="btn-add" style={{width:"19rem"}}>
+                    <button  onClick={getData} className="btn-add" style={{width:"19rem"}}>
                         Add Vehicle Entry
                     </button>
+                   
                 </form>
               
                 </div>

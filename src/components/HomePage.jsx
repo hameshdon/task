@@ -40,7 +40,7 @@ function HomePage() {
           
 
           <button className="add" onClick={() => history("./tollpage")}>View all tolls</button>
-        </div>
+        </div> 
       </div>
 
       <div className="vehicle-entry">
