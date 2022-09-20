@@ -17,7 +17,7 @@ function TollViewPage() {
   const history = useNavigate();
   console.log("kkkkkkkk",tollGetValue)
   return (
-    <>
+    <> 
     <div>
     {/* {tollGetValue.map((tollget) => (
 
