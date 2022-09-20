@@ -6,7 +6,7 @@ import GlobalContextProvider from "./components/GlobalContext";
 
 
 function App() {
-  return (
+  return ( 
 <GlobalContextProvider>
     <Router forceRefresh={true}>
   
