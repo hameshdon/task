@@ -67,7 +67,7 @@ function TollViewPage() {
       <div style={{display:"flex",flexDirection:"column"}}>
 
        <p>{tollget.tollName}</p>
-       </div>
+       </div> 
         <p>{tollget.single1/tollget.double1}</p>
         <p>{tollget.single2/tollget.double2}</p>
         <p>{tollget.single3/tollget.double3}</p>
