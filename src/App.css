@@ -119,3 +119,16 @@ body {
   content:"*";
   font-weight:bold;
 }
+.vehicle-entry-data {
+display: flex;
+    /* background-color: gainsboro; */
+    justify-content: space-between;
+    width: 89rem;
+    padding: 0px;
+    margin-top: 2px;
+    color: gray;
+    font-size: 14px;
+    padding: 0px 20px 0px 17px;
+    font-weight: bold;
+
+}

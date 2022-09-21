@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faL } from "@fortawesome/free-solid-svg-icons";
@@ -6,11 +6,16 @@ import { faFilter, faL } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import TollForm from "./Forms/TollForm";
 import VehicleForm from "./Forms/VehicleForm";
+import { GlobalContext } from "../components/GlobalContext";
 // import {Modal} from reactstrap
 function HomePage() {
+  const { data } = useContext(GlobalContext);
+
+  const vehicle = Object.values(data); 
   const [tollform, setTollForm] = useState(false);
   const [vehicleForm, setVehicleForm] = useState(false);
   const history = useNavigate();
+  console.log(vehicle)
   return (
     <>
     <div>
@@ -46,10 +51,24 @@ function HomePage() {
       <div className="vehicle-entry">
         <p style={{ paddingRight: "9rem" }}>VEHICLE TYPE</p>
         <p>VEHICLE NUMBER</p>
-        <p>DATE/TIME</p>
+       
         <p>TOLL NAME</p>
         <p>TARIFF</p>
       </div>
+      {vehicle.map((val) => (
+               <>
+               <div  className="vehicle-entry-data">
+               <val style={{ paddingRight: "0rem" }}>{val.vehicleType}</val>
+               <val >{val.selectToll}</val>
+               <val >{val.vehicleNum}</val>
+               <val >{val.tariff}</val>
+               </div>
+               </>
+              
+             ))}
+
+
+      
     </div>
     <div>
         <TollForm toll={tollform} onClose={() =>setTollForm(false)}/>

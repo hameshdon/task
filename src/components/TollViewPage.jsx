@@ -15,7 +15,7 @@ function TollViewPage() {
   const [tollform, setTollForm] = useState(false);
   const [vehicleForm, setVehicleForm] = useState(false);
   const history = useNavigate();
-  console.log("kkkkkkkk",tollGetValue)
+  console.log("kkkkkkkk",tollGetValue[0])
   return (
     <>
     <div>
@@ -59,6 +59,24 @@ function TollViewPage() {
         <p>TRUCK/BUS</p>
         <p>HEAVY VEHICLE</p>
       </div>
+      
+        
+      {tollGetValue.map((tollget,index) => (
+    
+      <div className="vehicle-entry-data" >
+      <div style={{display:"flex",flexDirection:"column"}}>
+
+       <p>{tollget.tollName}</p>
+       </div>
+        <p>{tollget.single1/tollget.double1}</p>
+        <p>{tollget.single2/tollget.double2}</p>
+        <p>{tollget.single3/tollget.double3}</p>
+        <p>{tollget.single4/tollget.double4}</p>
+
+</div>
+))} 
+       
+     
      
         
     </div>

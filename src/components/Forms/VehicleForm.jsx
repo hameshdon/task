@@ -1,8 +1,8 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import "../../App.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark} from "@fortawesome/free-solid-svg-icons";
-
+import { GlobalContext } from "../GlobalContext";
 
 const options = [
     {
@@ -47,10 +47,10 @@ export default function VehicleForm({vehicle,children,onClose}) {
   //   setCartUpdate,
   //   setCartApi
 
-
+  const {  setUserGender } = useContext(GlobalContext); 
 
   // } = useContext(GlobalContext);
-  const [selecttoll, setselecttoll] = useState('');
+  const [selectToll, setselecttoll] = useState('');
   const [vehicleType, setVehicleType] = useState('');
   const [vehicleNum, setVehicleNum] = useState('');
   const [tariff, setTariff] = useState('');
@@ -76,12 +76,17 @@ export default function VehicleForm({vehicle,children,onClose}) {
 console.log("=====>",vehicleType, vehicleNum,tariff)
 
     function getAlldetails(e) {
-      e.preventDefault()
-      localStorage.setItem('selecttoll', selecttoll);
-      localStorage.setItem('vehicleType', vehicleType);
-      localStorage.setItem('vehicleNum', vehicleNum);
-      localStorage.setItem('tariff', tariff);
+      e.preventDefault();
+      setUserGender( { 
+    
+      selectToll,
+
+      vehicleType,
+      vehicleNum,
+
+      tariff,
       
+     })
   }
   function getData() {
     console.log(localStorage.getItem('selecttoll'))
@@ -105,7 +110,7 @@ console.log("=====>",vehicleType, vehicleNum,tariff)
                     <label className="label-text">
                         Select toll Name<abr title="required">*</abr>
                     </label>
-                    <select className="input-field" required  value={selecttoll}  onChange={selecttollUpdate}> 
+                    <select className="input-field" required  value={selectToll}  onChange={selecttollUpdate}> 
                         
            
             {tollList.map((option) => (
@@ -144,9 +149,9 @@ console.log("=====>",vehicleType, vehicleNum,tariff)
                     <input className="input-field" placeholder="Tariff amount" value={tariff} onChange={tariffUpdate}  type="number" required/>
                     </div>
                   
-                    <button  onClick={getData} className="btn-add" style={{width:"19rem"}}>
+                    <input   type="submit" className="btn-add" style={{width:"19rem"}}
                         Add Vehicle Entry
-                    </button>
+                    />
                    
                 </form>
               

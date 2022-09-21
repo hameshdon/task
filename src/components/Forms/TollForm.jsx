@@ -86,65 +86,29 @@ export default function TollForm({ toll, children, onClose }) {
     setTollname(e.target.value);
   }
 
-  function getToll(e) {
-    e.preventDefault();
-    dispatch({ type: 'ADD_Toll', datas: { 
+  // function getToll(e) {
+  //   e.preventDefault();
+  //   dispatch({ type: 'ADD_Toll', datas: { 
     
-      tollName,
+  //     tollName,
 
-      fair1 ,
-      single1,
-      double1,
+  //     fair1 ,
+  //     single1,
+  //     double1,
 
-      fair2,
-      single2,
-      double2,
-      fair3,
-      single3,
-      double3,
+  //     fair2,
+  //     single2,
+  //     double2,
+  //     fair3,
+  //     single3,
+  //     double3,
 
-      fair4 ,
-      single4 ,
-      double4 ,
-    } })
-    // localStorage.setItem("tollDetails", obj);
-    // console.log("obj", obj);
-    // console.log("objddd", fair1);
-    localStorage.setItem("fair1", fair1);
-    localStorage.setItem("single1", single1);
-    localStorage.setItem("double1", double1);
-
-    localStorage.setItem("fair2", fair2);
-    localStorage.setItem("single2", single2);
-    localStorage.setItem("double2", double2);
-
-    localStorage.setItem("fair3", fair3);
-    localStorage.setItem("single3", single3);
-    localStorage.setItem("double3", double3);
-
-    localStorage.setItem("fair4", fair4);
-    localStorage.setItem("single4", single4);
-    localStorage.setItem("double4", double4);
-  }
-  function getTollDetails() {
-    console.log(localStorage.getItem("tollName"));
-
-    console.log(localStorage.getItem("fair1"));
-    console.log(localStorage.getItem("single1"));
-    console.log(localStorage.getItem("double1"));
-
-    console.log(localStorage.getItem("fair2"));
-    console.log(localStorage.getItem("single2"));
-    console.log(localStorage.getItem("double2"));
-
-    console.log(localStorage.getItem("fair3"));
-    console.log(localStorage.getItem("single3"));
-    console.log(localStorage.getItem("double3"));
-
-    console.log(localStorage.getItem("fair4"));
-    console.log(localStorage.getItem("single4"));
-    console.log(localStorage.getItem("double4"));
-  }
+  //     fair4 ,
+  //     single4 ,
+  //     double4 ,
+  //   } })
+    
+  // }
   // console.log("eeee",tollData)
   // console.log(tollName)
   if (!toll) return null;
@@ -156,7 +120,9 @@ export default function TollForm({ toll, children, onClose }) {
             <FontAwesomeIcon onClick={onClose} icon={faXmark} />
           </div>
           <p style={{ textAlign: "center" }}>Add new toll</p>
-          <form onSubmit={getToll}>
+          <form 
+          // onSubmit={getToll}
+          >
             <div style={{ display: "flex", flexDirection: "column" }}>
               <label className="label-text">
                 Toll Name<abr title="required">*</abr>
